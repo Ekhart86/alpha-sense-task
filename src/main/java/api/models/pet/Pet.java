@@ -1,6 +1,7 @@
 package api.models.pet;
 
 import lombok.*;
+import util.RandomUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public class Pet {
     @Builder.Default
-    public Integer id = (int) System.currentTimeMillis() / 1000;
+    public Integer id = RandomUtil.getIntValue(6);
     @Builder.Default
     public Category category = new Category();
     @Builder.Default

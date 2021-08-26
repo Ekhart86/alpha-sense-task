@@ -1,6 +1,7 @@
 package api.models.order;
 
 import lombok.*;
+import util.RandomUtil;
 
 @Getter
 @Setter
@@ -11,9 +12,9 @@ import lombok.*;
 @AllArgsConstructor
 public class Order {
     @Builder.Default
-    public Integer id = (int) System.currentTimeMillis() / 1000;
+    public Integer id = RandomUtil.getIntValue(6);
     @Builder.Default
-    public Integer petId = (int) System.currentTimeMillis() / 1500;
+    public Integer petId = RandomUtil.getIntValue(6);
     @Builder.Default
     private Integer quantity = 1;
     @Builder.Default
