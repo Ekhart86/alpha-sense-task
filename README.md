@@ -1,5 +1,5 @@
 
-###API Tests
+##API Tests
 
 For the tests to work correctly in IntelliJ Idea, you need to install the 'Cucumber for Java' plugin.
 
