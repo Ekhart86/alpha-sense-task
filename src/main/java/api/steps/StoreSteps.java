@@ -39,15 +39,15 @@ public class StoreSteps extends Beans {
 
     @Then("created Order exists in the app")
     public void createdPetExistsInApp() {
-        Order expectedOrder = TestContext.getContext(ContextKey.ORDER);
+        Order createdOrder = TestContext.getContext(ContextKey.ORDER);
         Response response = given()
                 .spec(SpecFactory.getSpecification(SpecType.DEFAULT))
                 .basePath(StoreEndpoints.ORDER_BASE_PATH)
-                .pathParam("orderId", expectedOrder.getId())
+                .pathParam("orderId", createdOrder.getId())
                 .get("/{orderId}");
         response.prettyPrint();
         response.then().statusCode(200);
-        assertEquals("Created Pet is incorrect.", expectedOrder, response.as(Order.class));
+        assertEquals("Created Pet is incorrect.", createdOrder, response.as(Order.class));
     }
 
 }

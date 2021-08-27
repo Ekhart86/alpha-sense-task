@@ -37,10 +37,10 @@ public class PetSteps extends Beans {
 
     @When("delete the created Pet")
     public void deleteTheCreatedPet() {
-        Pet expectedPet = TestContext.getContext(ContextKey.PET);
+        Pet createdPet = TestContext.getContext(ContextKey.PET);
         given().spec(SpecFactory.getSpecification(SpecType.DEFAULT))
                 .basePath(PetEndpoints.PET_BASE_PATH)
-                .pathParam("petId", expectedPet.getId())
+                .pathParam("petId", createdPet.getId())
                 .delete("/{petId}").then().log().all().statusCode(200);
     }
 
@@ -56,23 +56,23 @@ public class PetSteps extends Beans {
 
     @Then("created Pet exists in the app")
     public void createdPetExistsInApp() {
-        Pet expectedPet = TestContext.getContext(ContextKey.PET);
+        Pet createdPet = TestContext.getContext(ContextKey.PET);
         Response response = given()
                 .spec(SpecFactory.getSpecification(SpecType.DEFAULT))
                 .basePath(PetEndpoints.PET_BASE_PATH)
-                .pathParam("petId", expectedPet.getId())
+                .pathParam("petId", createdPet.getId())
                 .get("/{petId}");
         response.prettyPrint();
         response.then().statusCode(200);
-        assertEquals("Created Pet is incorrect.", expectedPet, response.as(Pet.class));
+        assertEquals("Created Pet is incorrect.", createdPet, response.as(Pet.class));
     }
 
     @Then("deleted Pet no longer exists in the app")
     public void deletedPetNoLongerExistsInTheApp() {
-        Pet expectedPet = TestContext.getContext(ContextKey.PET);
+        Pet deletedPet = TestContext.getContext(ContextKey.PET);
         given().spec(SpecFactory.getSpecification(SpecType.DEFAULT))
                 .basePath(PetEndpoints.PET_BASE_PATH)
-                .pathParam("petId", expectedPet.getId())
+                .pathParam("petId", deletedPet.getId())
                 .get("/{petId}").then().log().all().statusCode(404);
     }
 
