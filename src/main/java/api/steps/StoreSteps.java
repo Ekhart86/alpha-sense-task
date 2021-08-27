@@ -47,7 +47,7 @@ public class StoreSteps extends Beans {
                 .get("/{orderId}");
         response.prettyPrint();
         response.then().statusCode(200);
-        assertEquals("Created Pet is incorrect.", createdOrder, response.as(Order.class));
+        assertEquals("Created Order is incorrect.", createdOrder, response.as(Order.class));
     }
 
 }
