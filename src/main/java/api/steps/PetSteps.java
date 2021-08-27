@@ -25,8 +25,8 @@ public class PetSteps extends Beans {
         TestContext.setContext(ContextKey.API_RESPONSE, response);
     }
 
-    @When("add new Pet to the store with random parameters")
-    public void postAddNewPetToTheStoreWithRandomParameters() {
+    @When("add a new pet with random parameters to the store")
+    public void postAddNewPetWithRandomParametersToTheStore() {
         Pet randomPet = new Pet();
         given().spec(SpecFactory.getSpecification(SpecType.DEFAULT))
                 .body(gson.toJson(randomPet))
@@ -67,7 +67,7 @@ public class PetSteps extends Beans {
         assertEquals("Created Pet is incorrect.", expectedPet, response.as(Pet.class));
     }
 
-    @Then("deleted pet no longer exists in the app")
+    @Then("deleted Pet no longer exists in the app")
     public void deletedPetNoLongerExistsInTheApp() {
         Pet expectedPet = TestContext.getContext(ContextKey.PET);
         given().spec(SpecFactory.getSpecification(SpecType.DEFAULT))

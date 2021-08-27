@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public class StoreSteps extends Beans {
 
-    @When("place an Order for a created pet with parameters:")
+    @When("place an Order for a created Pet with parameters:")
     public void placeAnOrderForAPetWithParameters(Order order) {
         Pet createdPet = TestContext.getContext(ContextKey.PET);
         order.setPetId(createdPet.getId());

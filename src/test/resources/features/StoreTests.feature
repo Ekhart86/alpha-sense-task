@@ -4,9 +4,9 @@ Feature: Store tests
 
   @OrderCreation
   Scenario: Placing an Order to buy a Pet
-    When add new Pet to the store with random parameters
+    When add a new pet with random parameters to the store
     Then created Pet exists in the app
-    When place an Order for a created pet with parameters:
+    When place an Order for a created Pet with parameters:
       | status |
       | placed |
     Then created Order exists in the app
